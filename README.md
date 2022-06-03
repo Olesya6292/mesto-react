@@ -8,5 +8,7 @@
 * JavaScript
 * React
 
+**GitHub Pages**
 
+* [Ссылка на GitHub Pages](https://olesya6292.github.io/mesto-react)
 
