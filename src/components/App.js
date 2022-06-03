@@ -16,14 +16,14 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
 
   function handleEditAvatarClick() {
-    setIsEditProfilePopupOpen(true);
+    setIsEditAvatarPopupOpen(true);
   }
 
   function handleEditProfileClick() {
-    setIsAddPlacePopupOpen(true);
+    setIsEditProfilePopupOpen(true);
   }
   function handleAddPlaceClick() {
-    setIsEditAvatarPopupOpen(true);
+    setIsAddPlacePopupOpen(true);
   }
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -127,14 +127,6 @@ function App() {
           />
           <span className="popup__input-error link-input-error"></span>
         </PopupWithForm>
-
-        <PopupWithForm
-          name="delete"
-          title="Вы уверены?"
-          buttonText="Да"
-          isOpen={false}
-          onClose={closeAllPopups}
-        ></PopupWithForm>
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </div>
