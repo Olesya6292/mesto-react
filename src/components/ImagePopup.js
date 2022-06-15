@@ -1,8 +1,27 @@
 import React from "react";
 
 function ImagePopup({ card, onClose }) {
+  
+  React.useEffect(() => {
+    if(!card) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  },[card, onClose]);
+
+  const handleOverlayClose = (e) => {
+    if (e.target === e.currentTarget && card) {
+      onClose();
+    }
+  };
   return (
-    <div className={`popup popup_type_image ${card && "popup_opened"}`}>
+    <div className={`popup popup_type_image ${card && "popup_opened"}`} onClick={handleOverlayClose}>
       <div className="popup__image-container">
         <figure className="popup__figure">
           <img

@@ -1,17 +1,37 @@
 import React from "react";
 
-function PopupWithForm({ title, name, buttonText, isOpen, onClose, children }) {
+function PopupWithForm({ title, name, buttonText, loadingButtonText, isLoading, isOpen, onClose, onSubmit, children }) {
+  
+  React.useEffect(() => {
+    if(!isOpen) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", handleEscClose);
+    return () => {
+      document.removeEventListener("mousedown", handleEscClose);
+    };
+  },[isOpen, onClose]);
+
+  const handleOverlayClose = (e) => {
+    if (e.target === e.currentTarget && isOpen) {
+      onClose();
+    }
+  };
+
   return (
-    <div className={`popup popup_type_${name} ${isOpen && "popup_opened"}`}>
+    <div className={`popup popup_type_${name} ${isOpen && "popup_opened"}`} onClick={handleOverlayClose}>
       <div className="popup__container">
         <h3 className="popup__title">{title}</h3>
-        <form className="popup__form form-edit" name={name} noValidate>
+        <form className="popup__form form-edit" name={name} onSubmit={onSubmit} noValidate>
           {children}
           <button
             type="submit"
             className="popup__submit popup__submit_type_edit"
           >
-            {buttonText}
+            {!isLoading ? buttonText : loadingButtonText}
           </button>
         </form>
         <button
