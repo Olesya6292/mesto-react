@@ -9,9 +9,9 @@ function PopupWithForm({ title, name, buttonText, loadingButtonText, isLoading, 
         onClose();
       }
     };
-    document.addEventListener("mousedown", handleEscClose);
+    document.addEventListener("keydown", handleEscClose);
     return () => {
-      document.removeEventListener("mousedown", handleEscClose);
+      document.removeEventListener("keydown", handleEscClose);
     };
   },[isOpen, onClose]);
 
