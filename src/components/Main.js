@@ -1,10 +1,18 @@
 import React from "react";
 import Card from "./Card";
-import {CurrentUserContext} from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete }) {
+function Main({
+  cards,
+  onEditProfile,
+  onAddPlace,
+  onEditAvatar,
+  onCardClick,
+  onCardLike,
+  onCardDelete,
+}) {
   const currentUser = React.useContext(CurrentUserContext);
-  
+
   return (
     <main className="content page__content">
       <section className="profile">
@@ -45,12 +53,14 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
       </section>
       <section className="cards" aria-label="Карточки">
         <ul className="cards__list">
-          {cards.map((card, id) => (
-            <Card key={id} 
-            card={card} 
-            onCardClick={onCardClick} 
-            onCardLike={onCardLike}
-            onCardDelete={onCardDelete} />
+          {cards.map((card) => (
+            <Card
+              key={card._id}
+              card={card}
+              onCardClick={onCardClick}
+              onCardLike={onCardLike}
+              onCardDelete={onCardDelete}
+            />
           ))}
         </ul>
       </section>

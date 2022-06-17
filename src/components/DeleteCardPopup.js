@@ -1,8 +1,13 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm.js";
 
-export default function DeleteCardPopup({card, isOpen, onClose, onDeleteCard, isLoading}) {
-
+export default function DeleteCardPopup({
+  card,
+  isOpen,
+  onClose,
+  onDeleteCard,
+  isLoading,
+}) {
   function handleSubmit(evt) {
     evt.preventDefault();
 
