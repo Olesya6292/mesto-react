@@ -69,6 +69,7 @@ function App() {
     setIsDeleteCardPopupOpen(false);
     setSelectedCard(null);
     setDeleteCard({});
+    setIsLoading(false);
   }
 
   function cardLikeState(card, newCard) {

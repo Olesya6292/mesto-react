@@ -10,6 +10,7 @@ function PopupWithForm({
   onClose,
   onSubmit,
   children,
+  isDisabled = false,
 }) {
   React.useEffect(() => {
     if (!isOpen) return;
@@ -46,8 +47,8 @@ function PopupWithForm({
           {children}
           <button
             type="submit"
-            className="popup__submit popup__submit_type_edit"
-          >
+            disabled={isDisabled}
+            className={`popup__submit ${isDisabled && "popup__submit_inactive"}`}>
             {!isLoading ? buttonText : loadingButtonText}
           </button>
         </form>
